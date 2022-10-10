@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--.....................................................collapsed image toolbar-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_color_palette"
+        android:layout_height="200dp"
+        android:fitsSystemWindows="true"
+        app:liftOnScroll="true"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:fitsSystemWindows="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:expandedTitleMarginStart="72dp"
+            app:expandedTitleMarginBottom="28dp"
+            app:expandedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Expanded"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Collapsed"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/color_extraction_target_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/sample2"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"
+                android:contentDescription="@string/app_name" />
+           <!-- <com.google.android.material.appbar.MaterialToolbar
+                android:elevation="0dp"
+                android:id="@+id/topAppBar5"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/app_name"
+                app:layout_collapseMode="pin"
+                app:menu="@menu/main"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:navigationIcon="@drawable/ic_baseline_color_lens_24"
+                />-->
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:clipToPadding="false">
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/header_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Extract representative color palettes from images."
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/material_on_surface_emphasis_medium"/>
+
+            <GridLayout
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:useDefaultMargins="true">
+
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/vibrant_image_view"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="InefficientWeight"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        app:elevation="5dp"
+                        app:shapeAppearance="@style/ShapeAppearanceColorPallate"
+                        app:strokeColor="@color/colorPaletteBorder"
+                        app:strokeWidth="1dp" />
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="@string/vibrant_color_label"
+                        />
+
+                    <!--<TextView
+                        android:id="@+id/color_vibrant"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/darker_gray"
+                        android:text="#000000"
+                        />
+-->
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/light_vibrant_image_view"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="InefficientWeight"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        app:elevation="5dp"
+                        app:shapeAppearance="@style/ShapeAppearanceColorPallate"
+                        app:strokeColor="@color/colorPaletteBorder"
+                        app:strokeWidth="1dp" />
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="@string/light_vibrant_color_label"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/dark_vibrant_image_view"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="InefficientWeight"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        app:elevation="5dp"
+                        app:shapeAppearance="@style/ShapeAppearanceColorPallate"
+                        app:strokeColor="@color/colorPaletteBorder"
+                        app:strokeWidth="1dp" />
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="@string/dark_vibrant_color_label"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/muted_image_view"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="InefficientWeight"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        app:elevation="5dp"
+                        app:shapeAppearance="@style/ShapeAppearanceColorPallate"
+                        app:strokeColor="@color/colorPaletteBorder"
+                        app:strokeWidth="1dp" />
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="@string/muted_color_label"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/light_muted_image_view"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="InefficientWeight"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        app:elevation="5dp"
+                        app:shapeAppearance="@style/ShapeAppearanceColorPallate"
+                        app:strokeColor="@color/colorPaletteBorder"
+                        app:strokeWidth="1dp" />
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="@string/light_muted_color_label"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/dark_muted_image_view"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="InefficientWeight"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        app:elevation="5dp"
+                        app:shapeAppearance="@style/ShapeAppearanceColorPallate"
+                        app:strokeColor="@color/colorPaletteBorder"
+                        app:strokeWidth="1dp" />
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="@string/dark_muted_color_label"
+                        />
+                </LinearLayout>
+            </GridLayout>
+
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
