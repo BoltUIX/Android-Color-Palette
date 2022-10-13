@@ -5,59 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--.....................................................collapsed image toolbar-->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/toolbar_color_palette"
-        android:layout_height="200dp"
-        android:fitsSystemWindows="true"
-        app:liftOnScroll="true"
-        android:layout_width="match_parent"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        >
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbar"
-            android:fitsSystemWindows="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:expandedTitleMarginStart="72dp"
-            app:expandedTitleMarginBottom="28dp"
-            app:expandedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Expanded"
-            app:collapsedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Collapsed"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <ImageView
-                android:id="@+id/color_extraction_target_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/sample2"
-                android:scaleType="centerCrop"
-                android:fitsSystemWindows="true"
-                app:layout_collapseMode="parallax"
-                android:contentDescription="@string/app_name" />
-           <!-- <com.google.android.material.appbar.MaterialToolbar
-                android:elevation="0dp"
-                android:id="@+id/topAppBar5"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:title="@string/app_name"
-                app:layout_collapseMode="pin"
-                app:menu="@menu/main"
-                app:layout_scrollFlags="scroll|enterAlways|snap"
-                app:navigationIcon="@drawable/ic_baseline_color_lens_24"
-                />-->
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-
-
-
-
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -67,6 +19,17 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:clipToPadding="false">
+
+
+            <ImageView
+                android:id="@+id/color_extraction_target_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/sample2"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"
+                android:contentDescription="@string/app_name" />
 
             <TextView
                 android:gravity="center"
@@ -265,9 +228,6 @@
                         />
                 </LinearLayout>
             </GridLayout>
-
-
-
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

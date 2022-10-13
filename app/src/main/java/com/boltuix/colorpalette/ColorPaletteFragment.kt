@@ -23,7 +23,6 @@ class ColorPaletteFragment : Fragment() {
     private val binding get() = _binding!!
 
 
-    var mutedColor: Int = androidx.appcompat.R.attr.colorPrimary
     private val defaultColor: Int get() = ContextCompat.getColor(
         requireContext(),
         R.color.colorPrimary
@@ -42,49 +41,17 @@ class ColorPaletteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-
-        val bitmap = BitmapFactory.decodeResource(
-            resources,
-            R.drawable.sample4
-        )
-        Palette.from(bitmap).generate { palette ->
-
-            mutedColor = palette!!.getMutedColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.colorPrimary
-                )
-            )
-            binding.collapsingToolbar.setContentScrimColor(
-                mutedColor
-                )
-            binding.collapsingToolbar.setStatusBarScrimColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.colorSecondaryTextDefaultMaterialLight
-                )
-            )
-        }
-
-
-
-
+        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.sample2)
         val palette = PaletteUtils.createPaletteSync(bitmap)
-        view.findViewById<ImageView>(R.id.color_extraction_target_image_view).apply {
+        binding.colorExtractionTargetImageView.apply {
             setImageBitmap(bitmap)
         }
         setVibrantPalette(view, palette)
         setMutedPalette(view, palette)
-
-
-
-
     }
 
     private fun setMutedPalette(view: View, palette: Palette) {
-        view.findViewById<ShapeableImageView>(R.id.muted_image_view).apply {
+        binding.mutedImageView.apply {
             val color = palette.getMutedColor(defaultColor)
             setBackgroundColor(color)
 
@@ -102,16 +69,6 @@ class ColorPaletteFragment : Fragment() {
             Log.d("color1","bodyTextColor:"+bodyTextColor)
             Log.d("color1","titleTextColor:"+titleTextColor)
 
-
-
-            /* val psVibrant: Swatch = palette.vibrantSwatch!!
-             val color1: Int = psVibrant.rgb
-             val population: Int = psVibrant.population
-             val hsl: FloatArray = psVibrant.hsl
-             val bodyTextColor: Int = psVibrant.bodyTextColor
-             val titleTextColor: Int = psVibrant.titleTextColor
-
-             color_vibrant.text= bodyTextColor.toString()*/
         }
         view.findViewById<ShapeableImageView>(R.id.light_muted_image_view).apply {
             val color = palette.getLightMutedColor(defaultColor)
@@ -137,9 +94,6 @@ class ColorPaletteFragment : Fragment() {
             setBackgroundColor(color)
         }
     }
-
-    private fun getBitmap(@DrawableRes id: Int) =
-        BitmapFactory.decodeResource(requireContext().resources, id)
 
     override fun onDestroyView() {
         super.onDestroyView()
